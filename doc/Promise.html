@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/promise-cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Promise(T) - github.com/jwaldrip/promise-cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent current" data-id="github.com/jwaldrip/promise-cr/Promise" data-name="promise(t)">
+      <a href="Promise.html">Promise</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/promise-cr/Promise/HaltException" data-name="promise::haltexception">
+      <a href="Promise/HaltException.html">HaltException</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Promise(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Promise.html">Promise(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/jwaldrip/promise-cr/blob/34cf136acf6d19c1bdf4658fe4f86749266a37d1/src/promise.cr#L1" target="_blank">promise.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28%26block%3AT-%3ENil%2CString%7CException-%3ENil-%3E_%29-class-method" class="signature"><strong>.new</strong>(&block : T -> Nil, String | Exception -> Nil -> _)</a>
+        
+          <div class="summary"><p>Creates a new Promise with procs for how to resolve and how to reject the promise.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#catch%28%26block%3AException-%3E_%29-instance-method" class="signature"><strong>#catch</strong>(&block : Exception -> _)</a>
+        
+          <div class="summary"><p>Specifies an operation to complete after the previous operation has been rejected.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#then%28%26block%3AT-%3E_%29-instance-method" class="signature"><strong>#then</strong>(&block : T -> _)</a>
+        
+          <div class="summary"><p>Specifies an operation to complete after the previous operation has been resolved.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wait-instance-method" class="signature"><strong>#wait</strong></a>
+        
+          <div class="summary"><p>Will block until the chain before the specified <strong>wait</strong> has finished it's operations.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;&amp;block:T-&gt;Nil,String|Exception-&gt;Nil-&gt;_&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(&block : T -> Nil, String | Exception -> Nil -> _)
+
+        <a class="method-permalink" href="#new%28%26block%3AT-%3ENil%2CString%7CException-%3ENil-%3E_%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new Promise with procs for how to resolve and how to reject the promise.</p>
+
+<p><strong>NOTE</strong>: Raised exceptions will also trigger a reject.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/promise-cr/blob/34cf136acf6d19c1bdf4658fe4f86749266a37d1/src/promise.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="catch&#40;&amp;block:Exception-&gt;_&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>catch</strong>(&block : Exception -> _)
+
+        <a class="method-permalink" href="#catch%28%26block%3AException-%3E_%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Specifies an operation to complete after the previous operation has been
+rejected.</p>
+
+<p><strong>NOTE:</strong> Using a catch will allow the continuation of the chain after
+the catch.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/promise-cr/blob/34cf136acf6d19c1bdf4658fe4f86749266a37d1/src/promise.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="then&#40;&amp;block:T-&gt;_&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>then</strong>(&block : T -> _)
+
+        <a class="method-permalink" href="#then%28%26block%3AT-%3E_%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Specifies an operation to complete after the previous operation has been resolved.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/promise-cr/blob/34cf136acf6d19c1bdf4658fe4f86749266a37d1/src/promise.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wait-instance-method">
+      <div class="signature">
+        
+        def <strong>wait</strong>
+
+        <a class="method-permalink" href="#wait-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Will block until the chain before the specified <strong>wait</strong> has finished it's
+operations.</p>
+
+<p><strong>NOTE:</strong> This is typically used to prevent the application from terminating
+before the operations are complete, this may not be required if you have
+something else handling the process.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/promise-cr/blob/34cf136acf6d19c1bdf4658fe4f86749266a37d1/src/promise.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

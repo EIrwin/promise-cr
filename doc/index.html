@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/promise-cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/jwaldrip/promise-cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/jwaldrip/promise-cr/Promise" data-name="promise(t)">
+      <a href="Promise.html">Promise</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/promise-cr/Promise/HaltException" data-name="promise::haltexception">
+      <a href="Promise/HaltException.html">HaltException</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>Crystal Promise</h1>
+
+<p>A Promise Implementation in Crystal.</p>
+
+<h2>Installation</h2>
+
+<p>Add <code>promise</code> to the shard.yml file as a dependency.</p>
+
+<pre><code class='language-yml'># shard.yml
+dependencies:
+  promise:
+    github: jwaldrip/promise-cr
+    tag: {desired_tag}</code></pre>
+
+<h2>Usage</h2>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;promise&quot;</span>
+<span class="k">require</span> <span class="s">&quot;http/client&quot;</span>
+<span class="k">require</span> <span class="s">&quot;json&quot;</span>
+
+<span class="k">def</span> <span class="m">read_body</span>(response : <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span><span class="t">::</span><span class="t">Response</span>) : <span class="t">String</span>
+  response.body
+<span class="k">end</span>
+
+request <span class="o">=</span> <span class="t">Promise</span>(<span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span><span class="t">::</span><span class="t">Response</span> <span class="o">|</span> <span class="t">JSON</span><span class="t">::</span><span class="t">Any</span>).<span class="k">new</span> <span class="k">do</span> <span class="o">|</span>resolve<span class="o">|</span>
+  resolve.call(<span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.get <span class="s">&quot;https://httpbin.org/user-agent&quot;</span>)
+<span class="k">end</span>
+
+puts <span class="s">&quot;do something else....&quot;</span>
+
+request.<span class="k">then</span> <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
+  <span class="t">JSON</span>.parse(read_body(response <span class="k">as</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span><span class="t">::</span><span class="t">Response</span>))
+<span class="k">end</span>.catch <span class="k">do</span> <span class="o">|</span>ex<span class="o">|</span>
+  puts <span class="s">&quot;caught&#33;&quot;</span>
+  puts ex.message
+<span class="k">end</span>.<span class="k">then</span> <span class="k">do</span> <span class="o">|</span>json_hash<span class="o">|</span>
+  puts json_hash
+<span class="k">end</span>.wait</code></pre>
+
+<h2>Documentation</h2>
+
+<p>You can generate docs using <code>crystal doc</code> on your local machine,
+or visit: https://jwaldrip.github.com/promise-cr to view the current version's
+documentation.</p>
+
+<h2>Contributing</h2>
+
+<p>See <a href="/CONTRIBUTING.md" target="_blank">CONTRIBUTING</a></p>
+</div>
+</body>
+</html>
